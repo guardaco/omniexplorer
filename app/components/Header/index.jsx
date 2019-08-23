@@ -11,7 +11,10 @@ import { connect } from 'react-redux';
 import { routeActions } from 'redux-simple-router';
 import styled from 'styled-components';
 import SearchBox from 'components/SearchBox';
-import { ECOSYSTEM_PROD_NAME, ECOSYSTEM_TEST_NAME } from 'containers/App/constants';
+import {
+  ECOSYSTEM_PROD_NAME,
+  ECOSYSTEM_TEST_NAME,
+} from 'containers/App/constants';
 
 import {
   Alert,
@@ -83,7 +86,9 @@ class Header extends React.PureComponent {
                   <NavLink href="https://guarda.co">Wallet</NavLink>
                 </StyledNavItem>
                 <StyledNavItem>
-                  <NavLink href="https://changenow.io">Exchange</NavLink>
+                  <NavLink href="https://changenow.io?link_id=01b81d035af490">
+                    Exchange
+                  </NavLink>
                 </StyledNavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
@@ -91,7 +96,9 @@ class Header extends React.PureComponent {
                   </DropdownToggle>
                   <DropdownMenu right>
                     <DropdownItem>
-                      <NavLink href="https://omni.guarda.co">Documentation</NavLink>
+                      <NavLink href="https://omni.guarda.co">
+                        Documentation
+                      </NavLink>
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
@@ -106,7 +113,11 @@ class Header extends React.PureComponent {
           <Alert color="warning">
             <span>
               <strong>Planned Maintenance: </strong>
-              Starting at 18:30UTC On Feb 18th OmniExplorer will have a short maintenance window to upgrade back-end components. We expect this Maintenance to last up to an hour and during the maintenance Omni Explorer services will be unavailable. Once complete this message will be removed
+              Starting at 18:30UTC On Feb 18th OmniExplorer will have a short
+              maintenance window to upgrade back-end components. We expect this
+              Maintenance to last up to an hour and during the maintenance Omni
+              Explorer services will be unavailable. Once complete this message
+              will be removed
             </span>
           </Alert>
         </div>
@@ -130,14 +141,16 @@ NavbarToggler.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
-
 function mapDispatchToProps(dispatch) {
   return {
-    changeRoute: (url) => dispatch(routeActions.push(url)),
+    changeRoute: url => dispatch(routeActions.push(url)),
     dispatch,
   };
 }
 
-const withConnect = connect(null, mapDispatchToProps);
+const withConnect = connect(
+  null,
+  mapDispatchToProps,
+);
 
-export default compose(withConnect, )(Header);
+export default compose(withConnect)(Header);
